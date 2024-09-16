@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block pageheading %}
+cart
+{% endblock %}
+
+{% block main %}
+<div class="table-container">
+  <table class="cart-table">
+    <tr>
+      <th class="item-heading">Item</th>
+      <th class="item-heading">Quantity</th>
+      <th class="item-heading">Each</th>
+      <th class="item-heading">Total</th>
+    </tr>
+    {% for item in items %}
+    <tr>
+      <th>{{ item[2] }}</th>
+      <td class="number">{{ item[1] }}</td>
+      <td class="number">${{ item[3] }}</td>
+      <td class="number">${{ item[4] }}</td>
+    </tr>
+    {% endfor %}
+
+    <tr>
+      <th colspan="4" class="number">Total ${{ total }}</th>
+    </tr>
+  </table>
+
+
+<p><a href="/cancel_order">Cancel Order</a></p>
+
+
+  <!--{% if ordering %} -->
+<form class="myform" method="POST" <!-- action="/cart"-->>
+  <div class="form-group">
+    <div class ="form-label"<label for="name">Name for order:</label></div>
+    <div class="form-element">
+      <input type="text" id="name" name="name" required>
+    </div>
+    <!--<div class="button-group">
+      <input type="submit" value="Place Order" class="order">
+    </div>
+  </form>
+  <form method = "GET" action="/cancel_order">
+    <div class="button-group">
+      <input type="submit" value="Cancel Order"
+        </div>
+  </form> -->
+  <div class="form-group">
+    <div class="form-label"></div>
+    <div class="form-element"><input type="submit" value="Place Order"></div>
+  </div>
+    </div>
+</form>
+<!--{% endif %}-->
+
+{% endblock %}

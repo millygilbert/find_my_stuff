@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block pageheading %}
+items
+{% endblock %}
+
+{% block main %}
+
+  <div class = "category-items ">
+    <ul>
+      {% for category in categories %}
+      <li><a href="/items/{{ category[0] }} "> {{ category[1] }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="items">
+  
+     
+  <div class="items">
+    {% for item in items %}
+     <div class="item-box">
+        <div class="item-box-heading">
+         <h3>{{ item[1] }}</h3>
+        </div>
+        <div class="item-box-image">
+          <img src="/static/images/{{ item[4] }}.jpg">
+        </div>
+        <div class="item-box-info">
+          <p>{{ item[2] }}</p>
+          <p><strong>Location:</strong> {{ item[3] }}</p>
+          <p><strong>Date Found:</strong> ${{ item[5] }}</p>
+        </div>
+        {% if ordering %}
+        <div class ="item-box-info"><a href="/add_to_cart/{{ item[0] }}"> Add to cart </a></div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}
